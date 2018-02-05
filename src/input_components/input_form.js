@@ -3,10 +3,16 @@ import React, {Component} from 'react';
 class InputForm extends Component {
     constructor(props) {
         super(props);
-        this.onInputChange = props.onInputChange;
-        this.state = {searchInput: "", exchangeInput: "CoinBase", curInput: "USD"};
+        
+        this.state = {
+            searchInput: "", 
+            exchangeInput: "CoinBase", 
+            curInput: "USD",
+            fetchComponentKey: 0
+        };
         // searchInput must be caps later on when performing search.
 
+        this.onInputChange = props.onInputChange;
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         
@@ -15,6 +21,11 @@ class InputForm extends Component {
     handleChange(event) {
         // based on event.target.name, updates corresponding state.
         const name = event.target.name;
+
+        // changes key of fetch component to force remounting.
+        this.state.fetchComponentKey === 0 ? this.setState({fetchComponentKey: 1}) : this.setState({fetchComponentKey: 0});
+        // console.log(this.state.fetchComponentKey);
+
         // callback to force setState to update immediately in parent state (App)
         this.setState({[name]: event.target.value},() => this.onInputChange(this.state));
     }
@@ -22,7 +33,13 @@ class InputForm extends Component {
     handleSubmit(event) {
         // uses callback from App to force-update parent (App's) state.
 
-        this.onInputChange(this.state);
+        // forces re-mounting
+        this.state.fetchComponentKey === 0 ? this.setState({fetchComponentKey: 1}, 
+            () => this.onInputChange(this.state)) : 
+            this.setState({fetchComponentKey: 0}, 
+                () => this.onInputChange(this.state));
+
+        
         event.preventDefault();
     }
 
