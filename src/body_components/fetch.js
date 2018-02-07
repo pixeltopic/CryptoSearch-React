@@ -1,9 +1,15 @@
 import React, {Component} from "react";
+import UpdatePicture from "../view_components/update_picture";
 
 class Fetch extends Component {
     constructor(props) {
         super(props);
-        this.state = {descriptionJson: null}; // will be set by fetch helper funcs.
+        this.state = {
+            pictureData: null,
+            searchDetailData: null,
+            statDetailsData: null // null so make sure to display nothing in table until typing starts
+        }; 
+        // will be set by fetch helper funcs.
         // dumb components will be rendered on the render()
         // remember to color code.
 
@@ -45,9 +51,10 @@ class Fetch extends Component {
             if (obj !== -1) {
                 console.log("Update Stat Detail Views here");
                 // updateStatsDetails(obj);
+                this.setState({statDetailsData: obj});
                 
             } else {
-                let invalidSearchObj = {
+                const invalidSearchObj = {
                     PRICE: "N/A",
                     CHANGE24HOUR: "N/A",
                     CHANGEPCT24HOUR: 0,
@@ -58,6 +65,7 @@ class Fetch extends Component {
                     HIGH24HOUR: 0
                 }
                 //updateStatsDetails(invalidSearchObj);
+                this.setState({statDetailsData: invalidSearchObj});
                 console.log("Exchange is nonexistent");
             }
             
@@ -97,6 +105,12 @@ class Fetch extends Component {
             if (obj !== -1) {
                 // updatePicture(obj.BaseImageUrl, obj.ImageUrl);
                 // updateSearchDetails(obj.CoinName, obj.Symbol, exchangeInput, curInput);
+                this.setState({
+                    pictureData: obj.BaseImageUrl + obj.ImageUrl,
+                    searchDetailData: {coinName: obj.CoinName, 
+                        exchangeInput: exchangeInput, 
+                        curInput: curInput}
+                });
                 this.fetchAverage(obj.Symbol, exchangeInput, curInput);
             } else {
                 console.log("fetchDescription: Invalid CoinName or Symbol");
@@ -118,13 +132,16 @@ class Fetch extends Component {
 
         this.fetchDescription(coinName, exchangeInput, curInput);
 
+        // console.log(this.state);
+
 
     }
 
     render() {
         return (
             <div>
-                Placeholder for fetch class
+                Fetched Data Views
+                <UpdatePicture pictureData={this.state.pictureData}/>
             </div>
         );
     }

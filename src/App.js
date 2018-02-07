@@ -5,7 +5,7 @@ import './App.css';
 
 import _ from "lodash";
 import InputForm from "./input_components/input_form";
-import Fetch from "./fetch";
+import Fetch from "./body_components/fetch";
 
 // cd C:\Users\xmobl\Documents\GitRepos\cryptosearch-react
 
