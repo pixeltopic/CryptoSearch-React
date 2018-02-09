@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import UpdatePicture from "../view_components/update_picture";
+import UpdateSearchDetails from "../view_components/update_search_details";
 
 class Fetch extends Component {
     constructor(props) {
@@ -142,6 +143,7 @@ class Fetch extends Component {
             <div>
                 Fetched Data Views
                 <UpdatePicture pictureData={this.state.pictureData}/>
+                <UpdateSearchDetails searchDetailData={this.state.searchDetailData}/>
             </div>
         );
     }

@@ -7,7 +7,7 @@ const UpdatePicture = (props) => {
     }
     return (
         <div>
-            <img src={props.pictureData} alt="Coin Logo" class="coinlogo"/>
+            <img src={props.pictureData} alt="Coin Logo" className="coinlogo"/>
         </div>
     );
 }
