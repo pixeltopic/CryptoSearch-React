@@ -1,10 +1,17 @@
 import React from "react";
-import { Panel, Label } from "react-bootstrap";
+import { Panel, Label, Alert } from "react-bootstrap";
 
 const UpdateSearchDetails = (props) => {
 
     if (!props.searchDetailData) {
         return <div />
+    }
+
+    if (props.searchDetailData === -1) {
+        return (
+            <Alert bsStyle="warning">
+                <strong>Whoops.</strong> Nothing found for current coin name or symbol!</Alert>
+        );
     }
 
     const coinName = props.searchDetailData.coinName;

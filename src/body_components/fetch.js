@@ -28,6 +28,7 @@ class Fetch extends Component {
         }).then(response => {
             if (response.Response === "Error") {
                 console.log("fetchAverage: API Url was Invalid, likely no exchange for that currency.");
+                this.setState({statDetailData : -1});
                 
                 return -1;
             } else {
@@ -56,18 +57,8 @@ class Fetch extends Component {
                 this.setState({statDetailData: obj});
                 
             } else {
-                const invalidSearchObj = {
-                    PRICE: "N/A",
-                    CHANGE24HOUR: "N/A",
-                    CHANGEPCT24HOUR: 0,
-                    VOLUME24HOUR: "N/A",
-                    VOLUME24HOURTO: 0,
-                    OPEN24HOUR: "N/A",
-                    LOW24HOUR: 0,
-                    HIGH24HOUR: 0
-                }
                 //updateStatsDetails(invalidSearchObj);
-                this.setState({statDetailData: invalidSearchObj});
+                this.setState({statDetailData: -1});
                 console.log("Exchange is nonexistent");
             }
             
@@ -116,6 +107,7 @@ class Fetch extends Component {
                 this.fetchAverage(obj.Symbol, exchangeInput, curInput);
             } else {
                 console.log("fetchDescription: Invalid CoinName or Symbol");
+                this.setState({searchDetailData : -1});
             }
             
         }).catch(err => {

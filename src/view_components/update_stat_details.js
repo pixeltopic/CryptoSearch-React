@@ -1,9 +1,16 @@
 import React from "react";
-import { Table } from 'react-bootstrap';
+import { Table, Alert } from "react-bootstrap";
 
 const UpdateStatDetails = (props) => {
     if (!props.statDetailData) {
         return <div />
+    }
+
+    if (props.statDetailData === -1) {
+        return (
+            <Alert bsStyle="warning">
+                <strong>No Info Found...</strong> The exchange for your search parameters is nonexistent!</Alert>
+        );
     }
 
     const price = `${props.statDetailData.PRICE}`;
@@ -19,6 +26,7 @@ const UpdateStatDetails = (props) => {
 
     return (
         <div>
+            <Alert bsStyle="success"><strong>Success!</strong> Information retrieved.</Alert>
             <Table striped bordered condensed hover>
                 <thead>
                     <tr>
