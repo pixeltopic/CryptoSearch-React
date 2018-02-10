@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Navbar, Jumbotron, Button } from 'react-bootstrap';
+// import { Navbar, Jumbotron, Button } from 'react-bootstrap';
 // import logo from './logo.svg';
 import './App.css';
 
@@ -25,7 +25,7 @@ class App extends Component {
 
     render() {
         // console.log(this.state.inputFormData);
-        const updateFormData = _.debounce(allInputs => this.updateFormData(allInputs), 300);
+        const updateFormData = _.debounce(allInputs => this.updateFormData(allInputs), 50);
 
         return (
             <div className="App">

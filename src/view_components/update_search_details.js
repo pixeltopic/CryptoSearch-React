@@ -1,4 +1,5 @@
 import React from "react";
+import { Panel, Label } from "react-bootstrap";
 
 const UpdateSearchDetails = (props) => {
 
@@ -12,7 +13,12 @@ const UpdateSearchDetails = (props) => {
 
     return (
         <div>
-            You're viewing {coinName}'s stats from the {exchangeInput} exchange in {curInput}.
+            <Panel>
+                <Panel.Body>
+                    
+                    You are viewing <Label bsStyle="primary">{coinName}'s</Label>{' '} stats from the <Label bsStyle="info">{exchangeInput}</Label>{' '} exchange in <Label bsStyle="success">{curInput}</Label>{' '}.
+                    </Panel.Body>
+            </Panel>
         </div>
     );
 }

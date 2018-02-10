@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import UpdatePicture from "../view_components/update_picture";
 import UpdateSearchDetails from "../view_components/update_search_details";
+import UpdateStatDetails from "../view_components/update_stat_details";
 
 class Fetch extends Component {
     constructor(props) {
@@ -8,7 +9,7 @@ class Fetch extends Component {
         this.state = {
             pictureData: null,
             searchDetailData: null,
-            statDetailsData: null // null so make sure to display nothing in table until typing starts
+            statDetailData: null // null so make sure to display nothing in table until typing starts
         }; 
         // will be set by fetch helper funcs.
         // dumb components will be rendered on the render()
@@ -52,7 +53,7 @@ class Fetch extends Component {
             if (obj !== -1) {
                 console.log("Update Stat Detail Views here");
                 // updateStatsDetails(obj);
-                this.setState({statDetailsData: obj});
+                this.setState({statDetailData: obj});
                 
             } else {
                 const invalidSearchObj = {
@@ -66,7 +67,7 @@ class Fetch extends Component {
                     HIGH24HOUR: 0
                 }
                 //updateStatsDetails(invalidSearchObj);
-                this.setState({statDetailsData: invalidSearchObj});
+                this.setState({statDetailData: invalidSearchObj});
                 console.log("Exchange is nonexistent");
             }
             
@@ -141,9 +142,9 @@ class Fetch extends Component {
     render() {
         return (
             <div>
-                Fetched Data Views
                 <UpdatePicture pictureData={this.state.pictureData}/>
                 <UpdateSearchDetails searchDetailData={this.state.searchDetailData}/>
+                <UpdateStatDetails statDetailData={this.state.statDetailData}/>
             </div>
         );
     }

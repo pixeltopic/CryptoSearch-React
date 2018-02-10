@@ -1,4 +1,5 @@
 import React from "react";
+// import { Image } from "react-bootstrap";
 
 const UpdatePicture = (props) => {
 
@@ -7,7 +8,8 @@ const UpdatePicture = (props) => {
     }
     return (
         <div>
-            <img src={props.pictureData} alt="Coin Logo" className="coinlogo"/>
+            {/* <Image src={props.pictureData} responsive />; */}
+            <img src={props.pictureData}/>
         </div>
     );
 }
