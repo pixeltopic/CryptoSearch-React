@@ -1,7 +1,7 @@
 # CryptoSearch-React
 
 TODO: 
-Rewrite JSX using react-bootstrap
-Finish functionality for displaying data (Color coded in green or red)
+
+Finish functionality for displaying data (Color coded in green or red), Error message handling, Footer
 
 InputForm <-> App -> fetch -> display data (using functional components)

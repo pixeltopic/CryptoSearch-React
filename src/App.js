@@ -42,6 +42,10 @@ class App extends Component {
                 getInputFormData={
                     () => {return this.state.inputFormData}
                 }/>
+
+                <footer className="App-footer">
+                    Powered by CryptoCompare API & <a href="https://github.com/pixeltopic">My Github</a>.
+                </footer>
                     
             </div>
         );

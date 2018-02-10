@@ -15,9 +15,8 @@ const UpdateSearchDetails = (props) => {
         <div>
             <Panel>
                 <Panel.Body>
-                    
                     You are viewing <Label bsStyle="primary">{coinName}'s</Label>{' '} stats from the <Label bsStyle="info">{exchangeInput}</Label>{' '} exchange in <Label bsStyle="success">{curInput}</Label>{' '}.
-                    </Panel.Body>
+                </Panel.Body>
             </Panel>
         </div>
     );

@@ -52,7 +52,7 @@ const UpdateStatDetails = (props) => {
                         <td>{timestamp_str}</td>
                     </tr>
                 </tbody>
-            </Table>;
+            </Table>
         </div>
     );
 }

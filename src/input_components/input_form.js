@@ -1,4 +1,5 @@
-import React, {Component} from 'react';
+import React, {Component} from "react";
+import { Form, FormGroup, ControlLabel, FormControl, Button } from "react-bootstrap";
 
 class InputForm extends Component {
     constructor(props) {
@@ -72,44 +73,48 @@ class InputForm extends Component {
         return curDropdown;
     }
 
-    // TODO: use bootstrap to turn it into an inline form.
     render() {
+        // Renders an inline form via React-Bootstrap. "name" prop used for updating correct state.
         const exchangeSelection = this.exchangeInit();
         const curSelection = this.curInit();
 
         return (
-            <form
-            onSubmit={this.handleSubmit}>
-                <label>
-                    Enter Coin Name
-                    <input
+            <Form onSubmit={this.handleSubmit} inline>
+                <FormGroup controlId="formInlineName">
+                    <ControlLabel>Coin Name</ControlLabel>{' '}
+                    <FormControl 
+                    type="text"
                     name="searchInput"
+                    placeholder="e.g. btc, or bitcoin" 
                     value={this.state.searchInput} 
-                    onChange={this.handleChange} />
-                </label>
+                    onChange={this.handleChange}
+                    />
+                </FormGroup>{' '}
 
-                <label>
-                    Select Exchange
-                    <select className="exchange_input" 
+                <FormGroup controlId="formControlsSelect1">
+                    <ControlLabel>Exchange</ControlLabel>{' '}
+                    <FormControl 
+                    componentClass="select" 
                     name="exchangeInput"
                     value={this.state.exchangeInput} 
                     onChange={this.handleChange}>
                         {exchangeSelection}
-                    </select>
-                </label>
+                    </FormControl>
+                </FormGroup>{' '}
 
-                <label>
-                    Select Currency
-                    <select className="cur_input" 
+                <FormGroup controlId="formControlsSelect2">
+                    <ControlLabel>Currency</ControlLabel>{' '}
+                    <FormControl 
+                    componentClass="select" 
                     name="curInput"
                     value={this.state.curInput} 
                     onChange={this.handleChange}>
-                        {curSelection}
-                    </select>
-                </label>
-            <input type="submit" value="Refresh" />
-            </form>
-           
+                        {curSelection}>
+                    </FormControl>
+                </FormGroup>{' '}
+
+                <Button type="submit">Refresh</Button>
+            </Form>
         );
     }
 }
