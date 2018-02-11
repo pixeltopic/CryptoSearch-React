@@ -2,6 +2,8 @@ import React, {Component} from "react";
 import UpdatePicture from "../view_components/update_picture";
 import UpdateSearchDetails from "../view_components/update_search_details";
 import UpdateStatDetails from "../view_components/update_stat_details";
+import { Tabs, Tab, Panel } from "react-bootstrap";
+import "./fetch.css";
 
 class Fetch extends Component {
     constructor(props) {
@@ -132,11 +134,33 @@ class Fetch extends Component {
     }
 
     render() {
+        // pictureData will always be null if the fetch is incorrect, since url attributes are nonexistent
+        if (!this.state.pictureData) {
+            return (
+                <div>
+                    <UpdateSearchDetails searchDetailData={this.state.searchDetailData}/>
+                    <UpdateStatDetails statDetailData={this.state.statDetailData}/>
+                </div>
+            );
+        }
+
         return (
             <div>
-                <UpdatePicture pictureData={this.state.pictureData}/>
-                <UpdateSearchDetails searchDetailData={this.state.searchDetailData}/>
-                <UpdateStatDetails statDetailData={this.state.statDetailData}/>
+                <div className="Fetch-Body">
+                    <Panel>
+                        <Panel.Body>
+                            <Tabs defaultActiveKey={1} id="uncontrolled-tab-example">
+                                <Tab eventKey={1} title="Coin Info">
+                                    <UpdateSearchDetails searchDetailData={this.state.searchDetailData}/>
+                                    <UpdateStatDetails statDetailData={this.state.statDetailData}/>
+                                </Tab>
+                                <Tab eventKey={2} title="Coin Logo">
+                                    <UpdatePicture pictureData={this.state.pictureData}/>
+                                </Tab>
+                            </Tabs>
+                        </Panel.Body>
+                    </Panel>
+                </div>
             </div>
         );
     }

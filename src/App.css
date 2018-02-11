@@ -12,6 +12,9 @@
   height: 150px;
   padding: 20px;
   color: white;
+  background-image: linear-gradient(rgba(46, 43, 43, 0.4), rgba(20, 35, 62, 0.4)), url("./back.jpg");
+  background-position: center;
+  background-size: cover;
 }
 
 .App-title {

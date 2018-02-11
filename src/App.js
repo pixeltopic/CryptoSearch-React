@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-// import { Navbar, Jumbotron, Button } from 'react-bootstrap';
+import React, { Component } from "react";
+import { Well } from "react-bootstrap";
 // import logo from './logo.svg';
-import './App.css';
+import "./App.css";
 
 import _ from "lodash";
 import InputForm from "./input_components/input_form";
@@ -35,7 +35,7 @@ class App extends Component {
                     <h2 className="App-subtitle">React.js rewrite of CryptoSearch</h2>
                 </header>
                 
-                <InputForm onInputChange={updateFormData}/>
+                <Well><InputForm onInputChange={updateFormData}/></Well>
 
                 <Fetch 
                 key={this.state.inputFormData.fetchComponentKey} 
