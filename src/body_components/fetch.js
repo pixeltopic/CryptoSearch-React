@@ -35,9 +35,11 @@ class Fetch extends Component {
                 return -1;
             } else {
                 console.log("Fetched Averages");
+                // console.log(apiURL);
                 // console.log(response);
                 
                 let statDetail = response.DISPLAY;
+                let statRawDetail = response.RAW;
                 
                 return {
                     PRICE: statDetail.PRICE,
@@ -47,14 +49,16 @@ class Fetch extends Component {
                     VOLUME24HOURTO: statDetail.VOLUME24HOURTO,
                     OPEN24HOUR: statDetail.OPEN24HOUR,
                     LOW24HOUR: statDetail.LOW24HOUR,
-                    HIGH24HOUR: statDetail.HIGH24HOUR
+                    HIGH24HOUR: statDetail.HIGH24HOUR,
+                    
+                    RAWCHANGE24HOUR: statRawDetail.CHANGE24HOUR,
+                    RAWCHANGEPCT24HOUR: statRawDetail.CHANGEPCT24HOUR
                 }
             }
             
-//            console.log(response.Display);
+        //    console.log(response.Display);
         }).then(obj => {
             if (obj !== -1) {
-                console.log("Update Stat Detail Views here");
                 // updateStatsDetails(obj);
                 this.setState({statDetailData: obj});
                 

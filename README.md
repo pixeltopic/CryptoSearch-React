@@ -1,7 +1,6 @@
 # CryptoSearch-React
 
-TODO: 
 
-Finish functionality for displaying data (Color coded in green or red)
+Rough overview of the app organization:
 
 InputForm <-> App -> fetch -> display data (using functional components)
